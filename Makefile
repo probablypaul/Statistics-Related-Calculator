@@ -5,3 +5,5 @@ stats: main.o stats.o
 main.o: main.cpp stats.h
 	$(CC) $(CFLAGS) -c main.cpp
 stats.o: stats.h
+clean:
+	rm -f *.o core
