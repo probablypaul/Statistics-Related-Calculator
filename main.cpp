@@ -57,7 +57,7 @@ int main(){
         //Choice 5 prints the ordered list
         else if (user_choice == "5"){
             for (int i = 0; i < number_list.size(); i++){
-                if (i + 1 = number_list.size()){
+                if (i + 1 == number_list.size()){
                     cout << number_list[i] << endl;
                 }
                 else{
