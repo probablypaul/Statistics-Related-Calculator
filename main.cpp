@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 #include "stats.h"
 
 using namespace std;
@@ -13,16 +14,18 @@ int main(){
     while(number_list.empty()){ //Call get_list until there is a list of valid input
         number_list = get_list();
     }
+    sort (number_list.begin(), number_list.end()); //Order the list
     cout << endl;
     string user_choice = "";
-    while (user_choice != "5"){ //Loop until the user chooses to quit the program
+    while (user_choice != "6"){ //Loop until the user chooses to quit the program
         //Show the user the available choices
         cout << "Please select one of the following options:" << endl;
-        cout << "   1. Enter a newlist of numbers" << endl;
+        cout << "   1. Enter a new list of numbers" << endl;
         cout << "   2. Print mean" << endl;
         cout << "   3. Print median" << endl;
         cout << "   4. Print standard deviation" << endl;
-        cout << "   5. End program" << endl;
+        cout << "   5. Print the list in sequential order" << endl;
+        cout << "   6. End program" << endl;
         cout << " >> ";
         getline(cin, user_choice); //Get the users choice
         stats statistics; //Create an stats object
@@ -51,8 +54,19 @@ int main(){
             statistics.get_standard_deviation(number_list);
             statistics.print_values(3);
         }
+        //Choice 5 prints the ordered list
+        else if (user_choice == "5"){
+            for (int i = 0; i < number_list.size(); i++){
+                if (i + 1 = number_list.size()){
+                    cout << number_list[i] << endl;
+                }
+                else{
+                    cout << number_list[i] << ", ";
+                }
+            }
+        }
         //Report an error if the user enters an invalid choice
-        else if (user_choice != "5"){
+        else if (user_choice != "6"){
             cout << "Error: Invalid choice!" << endl;
         }
         cout << endl;
